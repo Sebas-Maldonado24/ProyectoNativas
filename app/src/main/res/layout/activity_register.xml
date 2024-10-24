@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:background="#99efed">
+
+    <Button
+        android:id="@+id/button_atras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@null"
+        android:background="@drawable/oval_button"
+        android:padding="8dp"
+        android:text="Atrás"
+        android:textColor="#000000"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="82dp"
+        tools:ignore="ExtraText,MissingConstraints" />
+
+    <!-- Cuadro que contiene el formulario de registro -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/register_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:elevation="4dp"
+        android:padding="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="#800054fb"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <!-- Contenedor del formulario -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Campo de Nombre -->
+            <EditText
+                android:id="@+id/editTextNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre"
+                android:inputType="textPersonName"
+                android:padding="12dp"
+                android:background="#ffffff"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Campo de Correo -->
+            <EditText
+                android:id="@+id/editTextCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo"
+                android:inputType="textEmailAddress"
+                android:padding="12dp"
+                android:background="#ffffff"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Campo de Ciudad -->
+            <EditText
+                android:id="@+id/editTextCiudad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ciudad"
+                android:inputType="text"
+                android:padding="12dp"
+                android:background="#ffffff"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Campo de Dirección -->
+            <EditText
+                android:id="@+id/editTextDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Dirección"
+                android:inputType="textPostalAddress"
+                android:padding="12dp"
+                android:background="#ffffff"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Campo de Identificación -->
+            <EditText
+                android:id="@+id/editTextIdentificacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Identificación"
+                android:inputType="number"
+                android:padding="12dp"
+                android:background="#ffffff"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Botón de Registro -->
+            <Button
+                android:id="@+id/buttonRegistrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/oval_button"
+                android:padding="12dp"
+                android:text="Registrar"
+                android:textAllCaps="true"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
