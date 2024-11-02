@@ -5,9 +5,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
 public class ProductListActivity extends AppCompatActivity {
+    private GoogleSignInClient googleSignInClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,16 +23,34 @@ public class ProductListActivity extends AppCompatActivity {
         Button buttonAtras = findViewById(R.id.button_atras);
         Button buttoncarrito = findViewById(R.id.button_carrito);
 
+        // Configura Google Sign-In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        googleSignInClient = GoogleSignIn.getClient(this, gso);
+
         // Lógica para el botón "Atrás"
         buttonAtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProductListActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                // Obtiene la cuenta de Google actual
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(ProductListActivity.this);
+
+                if (account != null) {
+                    // Si hay una cuenta de Google, cierra sesión
+                    googleSignInClient.signOut().addOnCompleteListener(task -> {
+                        Intent intent = new Intent(ProductListActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    });
+                } else {
+                    // Si no hay cuenta de Google, simplemente vuelve a la LoginActivity
+                    Intent intent = new Intent(ProductListActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
-
         // Lógica para el botón "Carrito"
         buttoncarrito.setOnClickListener(new View.OnClickListener() {
             @Override
