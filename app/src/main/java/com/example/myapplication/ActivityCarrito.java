@@ -53,6 +53,12 @@ public class ActivityCarrito extends AppCompatActivity {
             startActivity(intent);
             finish(); // Finaliza la actividad actual
         });
+         Button procederPagoButton = findViewById(R.id.buttonProcederPago);
+        procederPagoButton.setOnClickListener(v -> {
+            Intent intent = new Intent(ActivityCarrito.this, Pagos.class);
+            startActivity(intent);
+        });
+
 
         Button mapaButton = findViewById(R.id.mapa);
         mapaButton.setOnClickListener(view -> {
